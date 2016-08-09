@@ -7,70 +7,31 @@
         <!--Custom CSS-->
         <link rel="stylesheet" type="text/css" href="./css/style.css">
 		<<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jQuery/1.7.2/jQuery.min.js"></script>
-		<script src="./js/form.js"></script>
+		
     </head>
     <body>
-	<script type="text/javascript">
-			$(document).ready(function(){
-				
-				$('#box_form').dialog({
-					autoOpen: false,
-					height: 375,
-					width: 350,
-					modal: true,
-					buttons: [
-						{
-						text: "Cancel",
-						click: function() {
-							$(this).dialog("close");
-						}},
-					{
-						text: "Submit",
-						click: function() {
-							$('#zFormer').submit();
-						}}
-					]
-				
-				
-				$('#clicky').button().click(function() {
-					$("#box_form").dialog("open");
-				});
-				});	
-			});
-		</script>		
+		
         <div class="container" id="page-container">
 			
 					
 			<h1 id="app-name">
-				<span class="glyphicon glyphicon-globe"></span> Twitter Listener
+				<span class="glyphicon glyphicon-globe" ></span> Twitter Listener
 			</h1>
-			<!-- NB: glyphicon halflings are generally not free, but the developer made them free in bootstrap -->
+			
 
 			<h2 id="page-header">
-				watch Twitter because why not.
+				View Tweets by keyword
 			</h2>
 			
 			<div id="box_form">
 				<form id="zFormer" method="POST" action="former.php" name="former">
 					<p>
-						<label for="z_name">Your Name:</label>
-						<input type="text" value="Adam Panzer" name="z_name">
+						
+						<input type="text" id="input" value="Adam Panzer" name="z_name">
+							
+						<button type="button" class="button" id="clickButton">Search</button>
 					</p>
-					<p>
-						<label for="z_requestor">Your Email Address: </label>
-						<input type="text" value="apanzer@zendesk.com" name="z_requester">
-					</p>
-					<p>
-						<label for="z_subject">Subject: </label>
-						<input type="text" value="Who needs a subject?" name="z_subject">
-					</p>
-					<p>
-						<label for="z_description">Description: </label>
-						<textarea name="z_description">I have this pain in my knee.</textarea>
-					</p>
-					<p>
-						<input type="submit" value="submit" id="submitter">
-					</p>
+					
 				</form>
 			</div>
 					
@@ -93,7 +54,7 @@
         <!--Bootstrap Script-->
         <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <!--Custom Script-->
-        <script src="./js/basic.js"></script>
-		<script src="./js/form.js"></script>
+        <script src="./js/main.js"></script>
+		
     </body>
 </html>
