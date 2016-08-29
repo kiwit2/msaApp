@@ -6,6 +6,7 @@ html {
     background-size: cover;
 }
 
+
 body {
     color: white;
     background-color: transparent;
@@ -13,6 +14,7 @@ body {
 
 h1#app-name {
     font-size:84px;
+	font-weight: 600;
 }
 
 button#refreshbtn {
@@ -28,12 +30,12 @@ img#selected-img{
 }
 
 h2#page-header {
-    padding-top:20px;
+    padding-top:0px;
     padding-bottom:20px;
 }
 
 body #page-container {
-    margin-top: 150px;
+    margin-top: 125px;
     text-align: center;
     margin-bottom: 40px;
 }
@@ -46,16 +48,46 @@ input#my-file-selector {
     display:none;
 }
 
-#box_form > *{
-    font-size:12px;
-    margin-bottom:15px;
+#clickButton {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
 }
 
-#box_form > p > label{
-    display:block;
-    font-size:18px;
+#clickButton:hover {
+    background-color: #4449DB;
+    color: white;
+}
+#clickButton {
+	background-color: #83658C; 
+    border: none;
+    color: white;
+    padding: 5px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+	border-radius: 12px;
 }
 
-#box_form > p > input, #box_form > p > textarea{
-        width:300px;
+input[type=text] {
+    border: 2px solid #83658C;
+    border-radius: 4px;
+	height: 45px;
+	width: 300px;
 }
+
+input[type=text]:focus {
+    border: 3px solid #4449DB;
+	
+}
+
+input#input {
+	color: black;
+	padding-left: 13px;
+	font-size: 20px;
+}
+
+
+
+
+
