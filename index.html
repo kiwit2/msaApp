@@ -7,41 +7,42 @@
         <!--Custom CSS-->
         <link rel="stylesheet" type="text/css" href="./css/style.css">
 		<<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jQuery/1.7.2/jQuery.min.js"></script>
-		
+
     </head>
     <body>
-		
+
         <div class="container" id="page-container">
-			
-					
+
+
 			<h1 id="app-name">
 				<span class="glyphicon glyphicon-globe" ></span> Twitter Listener
 			</h1>
-			
+
 
 			<h2 id="page-header">
 				View Tweets by keyword
 			</h2>
-			
+
 			<div id="box_form">
 				<form id="zFormer" method="POST" action="former.php" name="former">
 					<p>
-						
-						<input type="text" id="input" value="Adam Panzer" name="z_name">
-							
-						<button type="button" class="button" id="clickButton">Search</button>
+
+						Screen Name: <input type="text" id="twitterSN" value="TwitterDev" name="screen_name">
+            Slug: <input type="text" id="twitterSlug" value="national-parks" name="slug">
+
+						<button type="button" class="button" id="clickButton" onclick="twitterSearch()">Search</button>
 					</p>
-					
+
 				</form>
 			</div>
-					
-					
-					
-				
         </div>
-		
-		
-        <!-- 
+
+<div class="container">
+  <div id="twitterEmbed">
+  </div>
+</div>
+
+        <!--
             NB: You generally do not want to publically expose the server structure (eg. ./node_modules/...)
             will sort that in later bootcamps with task-runners and the like.
             For now this is just a demonstration.
@@ -55,6 +56,7 @@
         <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
         <!--Custom Script-->
         <script src="./js/main.js"></script>
-		
+        <script src="js/twitter.js"></script>
+
     </body>
 </html>
