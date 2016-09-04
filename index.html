@@ -27,8 +27,16 @@
 				<form id="zFormer" method="POST" action="former.php" name="former">
 					<p>
 
-						Screen Name: <input type="text" id="twitterSN" value="TwitterDev" name="screen_name">
-            Slug: <input type="text" id="twitterSlug" value="national-parks" name="slug">
+            Screen Name: <input type='text' list='twitterSN'>
+            <datalist id='twitterSN'>
+               <option label='TwitterDev' value='TwitterDev'>
+            </datalist>
+            Slug: <input type='text' list='twitterSlug'>
+            <datalist id='twitterSlug'>
+              <option label='national-parks' value='national-parks'>
+              <option label='twitterflock-interviews' value='twitterflock-interviews'>
+            </datalist>
+
 
 						<button type="button" class="button" id="clickButton" onclick="twitterSearch()">Search</button>
 					</p>
