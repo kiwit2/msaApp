@@ -20,12 +20,15 @@ function twitterSearch() {
   destroyAllWidgets();
   var screenName = document.getElementById("twitterSN").value;
   var slug = document.getElementById("twitterSlug").value;
+  var div = document.createElement('div');
+  div.id = 'timeline';
+  document.getElementById('twitterEmbed').appendChild(div);
   twttr.widgets.createTimeline({
     sourceType: "list",
     ownerScreenName: screenName,
     slug: slug
   },
-    document.getElementById("twitterEmbed"),
+    document.getElementById(div.id),
     {
       height: 400
     }
@@ -33,7 +36,8 @@ function twitterSearch() {
 }
 
 function destroyAllWidgets() {
-    var twitter = document.getElementById('twitter-wjs');
-    if (twitter != null)
-        twitter.remove();
+    var el = document.getElementById('timeline');
+    if (el != null) {
+      el.parentNode.removeChild(el);
+    }
 };
