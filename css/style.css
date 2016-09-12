@@ -1,5 +1,5 @@
-html {
-    background: url("design-background.jpg");
+html { 
+    background: url("design-background.jpg"); 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -48,15 +48,6 @@ input#my-file-selector {
     display:none;
 }
 
-#twitterSlug {
-  color: black;
-  font-size: 18px;
-}
-
-#twitterSN {
-  color: black;
-  font-size: 18px;
-}
 
 #clickButton {
     -webkit-transition-duration: 0.4s; /* Safari */
@@ -68,7 +59,7 @@ input#my-file-selector {
     color: white;
 }
 #clickButton {
-	background-color: #83658C;
+	background-color: #83658C; 
     border: none;
     color: white;
     padding: 5px 40px;
@@ -88,7 +79,7 @@ input[type=text] {
 
 input[type=text]:focus {
     border: 3px solid #4449DB;
-
+	
 }
 
 input#input {
@@ -96,3 +87,15 @@ input#input {
 	padding-left: 13px;
 	font-size: 20px;
 }
+#map {
+	height: 400px;
+	width: 400px;
+}
+#mapsearch {
+	color: black;
+}
+
+
+
+
+
