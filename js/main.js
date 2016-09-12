@@ -1,28 +1,36 @@
-// Get jquery objects from DOM
-var imgSelector = $("#my-file-selector");
-var refreshbtn = $("#refreshbtn");
-var pageheader = $("#page-header");
-var pagecontainer = $("#page-container");
 
-// Register event listeners
-imgSelector.on("change", function () {
-    pageheader.html("Just a sec while we analyse your mood...");
-    setTimeout(changeUI, 2000); //some external call would happen here, add 2 sec delay to simulate
-                                //can implement jquery loading plugin
-});
-refreshbtn.on("click", function () {
-    // Load random song based on mood
-    alert("You clicked the button"); //can demo with sweetAlert plugin
+var map = new google.maps.Map(document.getElementById("map"),{
+  center:{
+    lat: 27.72,
+    lng: 85.36
+  },
+  zoom:15
 });
 
-// Manipulate the DOM
-function changeUI() {
-    //Show detected mood
-    pageheader.html("Your mood is: ...");
+var marker = new google.maps.Marker({
+  position:{
+    lat: 27.72,
+    lng: 85.36
+  },
+  map:map,
+  draggable: true
+});
 
-    //Display song refresh button
-    refreshbtn.css("display", "inline");
+var searchBox = new google.maps.places.SearchBox(document.getElementById("mapsearch"));
 
-    //Remove offset at the top
-    pagecontainer.css("marginTop", "20px");
-};
+google.maps.event.addListener(searchBox, "places_changed", function(){
+
+  var places = searchBox.getPlaces();
+
+  var bounds = new google.maps.LatLngBounds();
+  var i, place;
+
+  for(i=0; place=places[i]; i++){
+    bounds.extend(place.geometry.location);
+    marker.setPosition(place.geometry.location);
+  }
+
+  map.fitBounds(bounds);
+  map.setZoom(15);
+});
+
