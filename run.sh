@@ -1,3 +1,2 @@
-node workingstream
+node workingstream.js &&
 firefox index.html
-

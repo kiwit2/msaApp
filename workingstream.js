@@ -4,10 +4,9 @@ var config = require("./config");
 var express = require("express");
 var bodyParser = require('body-parser')
 var app = express();
-
 var tweets = {"tweets": []};
 
-
+app.use(bodyParser.urlencoded({extended: true}));
 
 var allowCrossDomain = function(req, res, callback) {
     res.header('Access-Control-Allow-Origin', '*');
@@ -18,6 +17,42 @@ var allowCrossDomain = function(req, res, callback) {
     callback();
 }
 
+app.get('/', function(req, res) {
+	res.sendFile(__dirname + "/index.html");
+})
+
+app.get('/node_modules/bootstrap/dist/css/bootstrap.min.css', function(req, res) {
+	res.sendFile(__dirname + "/node_modules/bootstrap/dist/css/bootstrap.min.css");
+});
+
+app.get('/css/style.css', function(req, res) {
+	res.sendFile(__dirname + "/css/style.css");
+})
+
+app.get('/node_modules/jquery/dist/jquery.min.js', function(req, res) {
+	res.sendFile(__dirname + '/node_modules/jquery/dist/jquery.min.js');
+})
+
+app.get('/node_modules/bootstrap/dist/js/bootstrap.min.js', function(req, res) {
+	res.sendFile(__dirname + '/node_modules/bootstrap/dist/js/bootstrap.min.js');
+})
+
+app.get('/js/main.js', function(req, res) {
+	res.sendFile(__dirname + '/js/main.js');
+})
+
+app.get('/Twitter_bird_logo.png', function(req, res) {
+	res.sendFile(__dirname + '/Twitter_bird_logo.png');
+})
+
+app.get('/css/design-background.jpg', function(req, res) {
+	res.sendFile(__dirname + '/css/design-background.jpg');
+})
+
+app.get('/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2', function(req, res) {
+	res.sendFile(__dirname + '/node_modules/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2');
+})
+
 app.get('/tweets', function(req, res) {
 	allowCrossDomain(req, res, function() {
 		res.end(JSON.stringify(tweets));
@@ -25,8 +60,6 @@ app.get('/tweets', function(req, res) {
 	});
 });
 
-// app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}));
 app.post('/terms', function(req, res) {
 	console.log(req.body.data);
 	terms = req.body.data;
@@ -36,7 +69,7 @@ app.post('/terms', function(req, res) {
 	});
 });
 
-var server = app.listen(8081, function() {
+var server = app.listen(8081, 'localhost', function() {
 	var host = server.address().address;
 	var port = server.address().port;
 
@@ -70,14 +103,3 @@ twit_bot = {
 		});
 	}
 }
-
-
-/*
-function gotData(err, data, response) {
-	var tweets = data.statuses;
-
-
-	for (var i = 0; i < tweets.length; i++){
-		console.log(tweets[i].text, tweets[i].coordinates);
-	}
-};*/
