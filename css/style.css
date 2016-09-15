@@ -88,7 +88,7 @@ input[type=text] {
     color:black;
     padding-left: 10px;
 	  height: 45px;
-	  width: 150px;
+	  width: 100%;
 }
 
 input[type=text]:focus {
@@ -96,8 +96,55 @@ input[type=text]:focus {
 
 }
 
+#removeButton {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
 
+#removeButton:hover {
+    background-color: #4449DB;
+    color: white;
+}
 
+#removeButton {
+    
+  	background-color: #83658C;
+    border: none;
+    color: white;
+    padding: 5px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+  	border-radius: 12px;
+}
+
+#addButton {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#addButton:hover {
+    background-color: #4449DB;
+    color: white;
+}
+
+#addButton {
+
+  	background-color: #83658C;
+    border: none;
+    color: white;
+    padding: 5px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+  	border-radius: 12px;
+}
+
+#termList {
+  font-size: 24px;
+}
 input#input {
 	color: black;
 	padding-left: 13px;

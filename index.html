@@ -29,25 +29,34 @@
       <h2 id="page-header">
 				US election Tweets
 			</h2>
+      <div class="container">
+        <div class='row'>
 
-      <div class='leftCol'>
-          Enter term:<br>
-          <input type="text" id="term"><button id="addButton" value="Add" onClick="addTerm();">Add</button>
-          <button id="removeButton" value="Remove" onClick="removeTerm();">Remove</button>
-          <br>
-        <div>
-          <ul id="termList">
-            <li>asdfa
-            <li>asdfasd
-          <ul>
+            <div class="col-sm-4">
+              <h3>Enter term:</h3><br>
+              <input type="text" id="term" width="100%"></input>
+              <br>
+              <br>
+              <button id="addButton" value="Add" onClick="addTerm();">Add</button>
+              <button id="removeButton" value="Remove" onClick="removeTerm();">Remove</button>
+              <br>
+
+              <div>
+                <br>
+                <ul id="termList">
+                  <li>asdfa</li>
+                  <li>asdfasd</li>
+                <ul>
+              </div>
+            </div>
+            <div class="col-sm-8">
+              <div id="map">
+              </div>
+            </div>
         </div>
       </div>
 
-      <div class="rightCol">
-        <div id="map">
 
-        </div>
-      </div>
       </div>
 		<script>
 		var markers = [];
