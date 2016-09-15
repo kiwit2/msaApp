@@ -1,3 +1,2 @@
 node workingstream
-firefox index.html
-
+start index.html
