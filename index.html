@@ -33,7 +33,6 @@
         <div class='row'>
 
             <div class="col-sm-4">
-              <button id="post" onClick="postData();">Send</button>
               <h3>Enter term:</h3><br>
               <input type="text" id="term" width="100%"></input>
               <br>
@@ -45,19 +44,8 @@
               <div>
                 <br>
                 <ul id="termList">
-                  <li>bernie
-                  <li>trump
-                  <li>hillary
-                  <li>Ted Cruz
-                  <li>Gary Johnson
-                  <li>president
-                  <li>election
-                  <li>vote
-                  <li>Donald
-                  <li>US
-                  <li>Sanders
-                  <li>America
-                  <li>Clinton
+                  <li>asdfa</li>
+                  <li>asdfasd</li>
                 <ul>
               </div>
             </div>
@@ -193,16 +181,6 @@
 				}
 			});
 		  }
-
-    function postData() {
-        var data = ["bernie","trump","hillary","Ted Cruz","Gary Johnson","president", "election", "vote", "Sanders", "Donald","clinton","US","america"];
-        var arr = $("#termList").toArray();
-        var data = [];
-        $('li').each(function(i, elem) {
-            data.push($.trim($(elem).text()));
-        });
-        $.post('http://localhost:8081/terms', {data});
-      };
 
 		  function start_service() {
 			window.setInterval(getTweets, 5000);

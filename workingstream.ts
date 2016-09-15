@@ -2,17 +2,56 @@ let Twit: any = require("twit");
 let config: any = require("./config");
 let express: any = require("express");
 let app: any = express();
-
+let bodyParser: any = require('body-parser')
 let tweets: any = {"tweets": []};
 
 let twit_bot: any;
+let allowCrossDomain: any;
+
+var allowCrossDomain = function(req, res, callback) void {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,POST');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Headers', 'json,jsonp');
+
+    callback();
+}
+
+app.get('/tweets', function(req, res) void {
+	allowCrossDomain(req, res, function() {
+		res.end(JSON.stringify(tweets));
+		tweets.tweets = [];
+	});
+});
+
+// app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}));
+app.post('/terms', function(req, res) void {
+	console.log(req.body.data);
+	terms = req.body.data;
+	twit_bot.run();
+	allowCrossDomain(req, res, function() void {
+		res.end(JSON.stringify({response: "success"}));
+	});
+});
+
+var server = app.listen(8081, function() void {
+	var host = server.address().address;
+	var port = server.address().port;
+
+	console.log("Twit Server listening at http://%s:%s", host, port);
+});
+
 
 twit_bot = {
-	run : function(){
+	run : function() {
 		console.log("the bot is starting");
+
 		var T = new Twit(config);
 
-		var stream = T.stream('statuses/filter', {track: ["bernie","trump","hillary","Ted Cruz","Gary Johnson","president", "election", "vote", "Sanders", "Donald","clinton","US","america"]})
+		var track = {track: terms};
+
+		var stream = T.stream('statuses/filter', track)
 
 		stream.on("tweet", function(tweet) {
 			if (tweet.coordinates != null) {
@@ -23,37 +62,21 @@ twit_bot = {
 				} else {
 					console.log(tweet.coordinates.type + ' unimplemented.');
 				}
-				
+
 				console.log("----");
 			}
-			
+
 		});
 	}
 }
 
-twit_bot.run();
 
-var allowCrossDomain = function(req, res, callback) {	
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Methods', 'GET');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    res.header('Access-Control-Allow-Headers', 'json,jsonp');
-
-    callback();
-}
-
-app.get('/tweets', function(req, res) {
-	allowCrossDomain(req, res, function() {
-		res.end(JSON.stringify(tweets));
-		tweets.tweets = [];
-	});
-});
+/*
+function gotData(err, data, response) void {
+	var tweets = data.statuses;
 
 
-var server = app.listen(8081, function(){
-	let host: any = server.address().address;
-	var port: number = server.address().port;
-	
-	console.log("Twit Server listening at http://%s:%s", host, port);	
-});
-
+	for (var i = 0; i < tweets.length; i++){
+		console.log(tweets[i].text, tweets[i].coordinates);
+	}
+};*/
