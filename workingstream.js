@@ -11,7 +11,11 @@ twit_bot = {
 		console.log("the bot is starting");
 		var T = new Twit(config);
 
-		var stream = T.stream('statuses/filter', {track: ["bernie","trump","hillary","Ted Cruz","Gary Johnson","president", "election", "vote", "Sanders", "Donald","clinton","US","america"]})
+		var list = $("termList").val();
+		console.log(list);
+		var track = {track: ["bernie","trump","hillary","Ted Cruz","Gary Johnson","president", "election", "vote", "Sanders", "Donald","clinton","US","america", "wall"]};
+
+		var stream = T.stream('statuses/filter', track)
 
 		stream.on("tweet", function(tweet) {
 			if (tweet.coordinates != null) {
@@ -48,33 +52,11 @@ app.get('/tweets', function(req, res) {
 	});
 });
 
-// app.get('/', function (req, res, next) {
-//
-//   var options = {
-//     root: __dirname,
-//     dotfiles: 'deny',
-//     headers: {
-//         'x-timestamp': Date.now(),
-//         'x-sent': true
-//     }
-//   };
-//
-//   var fileName = 'index.html';
-//   res.sendFile(fileName, options, function (err) {
-//     if (err) {
-//       console.log(err);
-//       res.status(err.status).end();
-//     } else {
-//       console.log('Sent:', fileName);
-//     }
-//   });
-// });
-
 var server = app.listen(8081, function() {
 	var host = server.address().address;
 	var port = server.address().port;
 
-	console.log("Twit Server listening at http://%s:%d", host, port);
+	console.log("Twit Server listening at http://%s:%s", host, port);
 });
 
 

@@ -26,19 +26,29 @@
 				<span class="glyphicon glyphicon-globe" ></span> Twitter Presidential Race
 			</h1>
 
-
-			<h2 id="page-header">
+      <h2 id="page-header">
 				US election Tweets
 			</h2>
 
+      <div class='leftCol'>
+          Enter term:<br>
+          <input type="text" id="term"><button id="addButton" value="Add" onClick="addTerm();">Add</button>
+          <button id="removeButton" value="Remove" onClick="removeTerm();">Remove</button>
+          <br>
+        <div>
+          <ul id="termList">
+            <li>asdfa
+            <li>asdfasd
+          <ul>
+        </div>
+      </div>
 
-			<div id="map">
-
-			</div>
-
-
+      <div class="rightCol">
+        <div id="map">
 
         </div>
+      </div>
+      </div>
 		<script>
 		var markers = [];
 		function initMap() {
@@ -100,12 +110,12 @@
 			});
 
 			// Adds a marker at the center of the map.
-
-
 		  }
 
 
-		  function addMarfafaker(location) {
+
+
+		  function addMarker(location) {
 			var marker = new google.maps.Marker({
 			  position: location,
 			  map: map,
@@ -150,6 +160,7 @@
 				success: function (json) {
 					console.log(json);
 					console.log("Number of tweets recieved: " + json.tweets.length);
+
 					for (var i = 0; i < json.tweets.length; i++) {
 						json_location = json.tweets[i];
 						latlon = new google.maps.LatLng(json_location[1], json_location[0]);
@@ -157,7 +168,7 @@
 					}
 				},
 				error: function () {
-					alert("Twit bot not running on localhost.");
+					// alert("Twit bot not running on localhost.");
 				}
 			});
 		  }
@@ -165,7 +176,21 @@
 		  function start_service() {
 			window.setInterval(getTweets, 5000);
 		  }
-		  start_service();
+		  // start_service();
+
+
+      function addTerm() {
+          var term = $("#term").val();
+          if (term != '') {
+            $("#term").val('');
+            $("#termList").append(
+            $('<li>').text(term));
+          }
+      }
+
+      function removeTerm() {
+        $("#termList li:last-child").remove()
+      }
 
     </script>
 

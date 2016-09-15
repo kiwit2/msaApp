@@ -1,5 +1,5 @@
-html { 
-    background: url("design-background.jpg"); 
+html {
+    background: url("design-background.jpg");
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -40,6 +40,18 @@ body #page-container {
     margin-bottom: 40px;
 }
 
+.leftCol {
+  width: 300px;
+  height: inherit;
+  padding-right: 20px;
+  float: left;
+}
+
+.rightCol {
+  padding-top: 20px;
+  margin-left: 260px;
+}
+
 .btn-wrapper {
     padding: 20px 0;
 }
@@ -59,7 +71,7 @@ input#my-file-selector {
     color: white;
 }
 #clickButton {
-	background-color: #83658C; 
+	background-color: #83658C;
     border: none;
     color: white;
     padding: 5px 40px;
@@ -73,14 +85,18 @@ input#my-file-selector {
 input[type=text] {
     border: 2px solid #83658C;
     border-radius: 4px;
-	height: 45px;
-	width: 300px;
+    color:black;
+    padding-left: 10px;
+	  height: 45px;
+	  width: 150px;
 }
 
 input[type=text]:focus {
     border: 3px solid #4449DB;
-	
+
 }
+
+
 
 input#input {
 	color: black;
@@ -94,8 +110,3 @@ input#input {
 #mapsearch {
 	color: black;
 }
-
-
-
-
-
