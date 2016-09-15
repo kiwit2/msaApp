@@ -163,7 +163,7 @@
 
 		  function getTweets() {
 			$.ajax({
-				url: 'http://localhost:8081/tweets',
+				url: 'http://nodeapptest2.azurewebsites.net/tweets',
 				type:'GET',
 				mimeType: 'application/json',
 				datatype: 'json',
@@ -193,7 +193,7 @@
         $('li').each(function(i, elem) {
             data.push($.trim($(elem).text()));
         });
-        $.post('http://localhost:8081/terms', {data});
+        $.post('http://nodeapptest2.azurewebsites.net/terms', {data});
       };
 
 		  function start_service() {
