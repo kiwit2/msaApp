@@ -1,2 +1,2 @@
 [config]
-command = run.bat
+command = run.sh
