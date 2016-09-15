@@ -11,8 +11,7 @@ twit_bot = {
 		console.log("the bot is starting");
 		var T = new Twit(config);
 
-		var list = $("termList").val();
-		console.log(list);
+		
 		var track = {track: ["bernie","trump","hillary","Ted Cruz","Gary Johnson","president", "election", "vote", "Sanders", "Donald","clinton","US","america", "wall"]};
 
 		var stream = T.stream('statuses/filter', track)
