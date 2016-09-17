@@ -163,6 +163,29 @@ input[type=text]:focus {
   	border-radius: 12px;
 }
 
+#startButton {
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+#startButton:hover {
+    background-color: #4449DB;
+    color: white;
+}
+
+#startButton {
+  	background-color: #83658C;
+    border: none;
+    color: white;
+    padding: 5px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+  	border-radius: 12px;
+}
+
+
 #termList {
   font-size: 24px;
 }

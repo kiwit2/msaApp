@@ -32,7 +32,11 @@
         <div class='row'>
 
             <div class="col-sm-4">
+<<<<<<< HEAD
               <button id="startButton" onClick="postData();">Search</button>
+=======
+              <button id="startButton" onClick="postData();">Start</button>
+>>>>>>> 0be858089ab684a42194216cd431d0f1502c2543
               <h3>Enter term:</h3><br>
               <input type="text" id="term" width="100%"></input>
               <br>
@@ -44,10 +48,26 @@
               <div>
                 <br>
                 <ul id="termList">
+<<<<<<< HEAD
                   <li>beach
                   <li>sun
                   <li>fun
                 
+=======
+                  <li>bernie
+                  <li>trump
+                  <li>hillary
+                  <li>Ted Cruz
+                  <li>Gary Johnson
+                  <li>president
+                  <li>election
+                  <li>vote
+                  <li>Donald
+                  <li>US
+                  <li>Sanders
+                  <li>America
+                  <li>Clinton
+>>>>>>> 0be858089ab684a42194216cd431d0f1502c2543
                 <ul>
               </div>
             </div>
@@ -154,8 +174,12 @@
 
 		  function getTweets() {
 			$.ajax({
+<<<<<<< HEAD
 				// url: 'http://nodeapptest2.azurewebsites.net/tweets',
         url: 'http://localhost:8081/tweets',
+=======
+				url: 'http://nodeapptest2.azurewebsites.net/tweets',
+>>>>>>> 0be858089ab684a42194216cd431d0f1502c2543
 				type:'GET',
 				mimeType: 'application/json',
 				datatype: 'json',
@@ -173,19 +197,27 @@
 					}
 				},
 				error: function () {
-					// alert("Twit bot not running on localhost.");
+					alert("Twit bot not running on localhost.");
 				}
 			});
 		  }
 
     function postData() {
+<<<<<<< HEAD
         var data = ["beach", "sun", "fun"];
+=======
+        var data = ["bernie","trump","hillary","Ted Cruz","Gary Johnson","president", "election", "vote", "Sanders", "Donald","clinton","US","america"];
+>>>>>>> 0be858089ab684a42194216cd431d0f1502c2543
         var arr = $("#termList").toArray();
         var data = [];
         $('li').each(function(i, elem) {
             data.push($.trim($(elem).text()));
         });
+<<<<<<< HEAD
         $.post('http://localhost:8081/terms', {data});
+=======
+        $.post('http://nodeapptest2.azurewebsites.net/terms', {data});
+>>>>>>> 0be858089ab684a42194216cd431d0f1502c2543
       };
 
 		  function start_service() {
