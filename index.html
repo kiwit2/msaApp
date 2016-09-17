@@ -7,7 +7,6 @@
         <!--Custom CSS-->
         <link rel="stylesheet" type="text/css" href="./css/style.css">
 		<!--<script type="text/javascript" src="main.js">-->
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jQuery/1.7.2/jQuery.min.js"></script>
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAydAiR-XMBxYvsZznPr-_Q0GzrluXUSXU&libraries=places" type="text/javascript"></script>
 		<style type="text/css">
 		 #map {
@@ -23,16 +22,17 @@
 
 
 			<h1 id="app-name">
-				<span class="glyphicon glyphicon-globe" ></span> Twitter Presidential Race
+				<span class="glyphicon glyphicon-globe" ></span> Twitter Map Search
 			</h1>
 
       <h2 id="page-header">
-				US election Tweets
+				find live tweet locations
 			</h2>
       <div class="container">
         <div class='row'>
 
             <div class="col-sm-4">
+              <button id="startButton" onClick="postData();">Search</button>
               <h3>Enter term:</h3><br>
               <input type="text" id="term" width="100%"></input>
               <br>
@@ -44,8 +44,10 @@
               <div>
                 <br>
                 <ul id="termList">
-                  <li>asdfa</li>
-                  <li>asdfasd</li>
+                  <li>beach
+                  <li>sun
+                  <li>fun
+                
                 <ul>
               </div>
             </div>
@@ -63,7 +65,6 @@
 		function initMap() {
 
 			var haightAshbury = {lat: 0, lng: 0};
-			var coords = [{lat: 35.769222, lng: -50.446222},{lat: 35.769222, lng: -110.446222},{lat: 20.769222, lng: -100.446222},{lat: 32.769222, lng: -132.446222},{lat: 31.769, lng: -122.446},{lat: 39.769, lng: -122.446}]
 
 			var styledMapType = new google.maps.StyledMapType(
 			  [
@@ -110,9 +111,6 @@
 			map.mapTypes.set('styled_map', styledMapType);
 			map.setMapTypeId('styled_map');
 
-			for (var x = 0; x < coords.length; x++) {
-			  //addMarker(coords[x]);
-			}
 			// This event listener will call addMarker() when the map is clicked.
 			map.addListener('click', function(event) {
 			  addMarker(event.latLng);
@@ -120,9 +118,6 @@
 
 			// Adds a marker at the center of the map.
 		  }
-
-
-
 
 		  function addMarker(location) {
 			var marker = new google.maps.Marker({
@@ -159,7 +154,8 @@
 
 		  function getTweets() {
 			$.ajax({
-				url: 'http://localhost:8081/tweets',
+				// url: 'http://nodeapptest2.azurewebsites.net/tweets',
+        url: 'http://localhost:8081/tweets',
 				type:'GET',
 				mimeType: 'application/json',
 				datatype: 'json',
@@ -181,6 +177,16 @@
 				}
 			});
 		  }
+
+    function postData() {
+        var data = ["beach", "sun", "fun"];
+        var arr = $("#termList").toArray();
+        var data = [];
+        $('li').each(function(i, elem) {
+            data.push($.trim($(elem).text()));
+        });
+        $.post('http://localhost:8081/terms', {data});
+      };
 
 		  function start_service() {
 			window.setInterval(getTweets, 5000);

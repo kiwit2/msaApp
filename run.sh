@@ -1,2 +1,2 @@
-node workingstream
-start index.html
+firefox index.html &&
+node workingstream.js
